@@ -68,6 +68,29 @@ ld cross(pt v,pt w){
     return v.x*w.y - v.y*w.x;
 }
 
+//orientation (>0 if C is on the left of AB , <0 if C is on the right of AB , ==0 if A B C is collinear)
+ld orient(pt a,pt b,pt c){
+	return cross(b-a,c-a);
+}
+
+bool iscollinear(pt a,pt b,pt c){
+	return cross(b-a,c-a)==0;
+}
+
+//determine the angle between three points (the angle between two lines we make from three points)
+
+double orientedAngle(pt a,pt b,pt c){
+	if(orient(b-a,c-a)>=0){
+		return angle(b-a,c-a);
+	}else{
+		return 2*M_PI - angle(b-a,c-a);
+	}
+}
+
+
+//polar sort should have been here
+
+
 
 int main(){
     //test
